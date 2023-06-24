@@ -1,24 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "./Navbar";
+import Customers from "./pages/Customers";
+import Home from "./pages/Home";
+import { Route, Routes } from "react-router-dom";
+import { useState, useEffect } from "react";
+
+const reportUrl = "https://startdeliver-mock-api.glitch.me/report";
+const customerUrl = "https://startdeliver-mock-api.glitch.me/customer";
 
 function App() {
+  const [data, setData] = useState([]);
+  const [customerData, setCustomerData] = useState([]);
+
+  useEffect(() => {
+    fetchData(reportUrl, setData);
+    fetchData(customerUrl, setCustomerData);
+  }, []);
+
+  const fetchData = async (url, setData) => {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      console.log(1,data.data);
+      setData(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <div className="container">
+        <Routes>
+          <Route
+            path="/home"
+            element={<Home report={data.data} />}
+          />
+          <Route
+            path="/customers"
+            element={<Customers customerData={customerData} />}
+          />
+        </Routes>
+      </div>
+    </>
   );
 }
 
