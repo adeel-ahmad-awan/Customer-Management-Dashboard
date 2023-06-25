@@ -1,15 +1,36 @@
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
+import logo from "./assets/images/logo.png";
+import avatar from "./assets/images/avatar.png";
+import { useState } from "react";
 
 export default function Navbar() {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const handleDropdownOpen = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
   return (
     <nav className="nav">
       <Link to="/" className="site-title">
-        DEV APP
+        <img src={logo} alt="Logo" className="logo-image" />
+        <span className="logo-text">DEV APP</span>
       </Link>
       <ul>
         <CustomLink to="/home">Home</CustomLink>
         <CustomLink to="/customers">Customers</CustomLink>
       </ul>
+      <div className="navbar-dropdown">
+        <img src={avatar} alt="avatar" className="avatar-image" />
+        <span className="avatar-button" onClick={handleDropdownOpen}>
+          Adeel Ahmad
+        </span>
+        {dropdownOpen && (
+          <div className="dropdown-content">
+            <Link to={`/logout`}>Logout</Link>
+          </div>
+        )}
+      </div>
     </nav>
   );
 }

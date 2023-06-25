@@ -1,9 +1,9 @@
-* {
-  box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100,200,300,400,500,600,700,800,900%7CNunito+Sans:100,200,300,400,500,600,700,800,900%7CSource+Sans+Pro:100,200,300,400,500,600,700,800,900%7CSource+Code+Pro:100,300,500%7CLato:400&subset=latin-ext');
+
 
 body {
   margin: 0;
+  font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .container {
@@ -12,8 +12,8 @@ body {
 }
 
 .nav {
-  background-color: #333;
-  color: white;
+  background-color: white;
+  color: black;
   display: flex;
   justify-content: space-between;
   align-items: stretch;
@@ -43,7 +43,9 @@ body {
 }
 
 .nav li.active {
-  background-color: #555;
+  color: #2050fe;
+  text-decoration: underline;
+  font-weight: bold;
 }
 
 .nav li:hover {
@@ -65,7 +67,7 @@ body {
 
 .homePageTableHeading {
   text-align: left;
-  color: #555;
+  color: #a4aabd;
 }
 
 .homePageTableData {
@@ -75,6 +77,50 @@ body {
 }
 
 .homePageNewArr {
-  color: gray;
+  color: #a4aabd;
   text-align: left;
+}
+
+.customerPageTable {
+  width: 100%;
+}
+
+.customerPageTableHeading {
+  text-align: left;
+  color: #a4aabd;
+}
+
+.customerPageTableRow {
+  text-align: left;
+}
+
+.customerDetailsHeading {
+  text-align: left;
+}
+
+.customerDetailsTable {
+  width: 100%;
+}
+
+.customerDetailsTableData {
+  text-align: left;
+}
+
+.logo-image {
+  width: 55px;
+}
+
+.avatar-image {
+  width: 45px;
+  height: 45px;
+  border-radius: 5px;
+  margin: 1px
+}
+
+.avatar-button {
+  margin: 5px;
+}
+
+.navbar-dropdown {
+  display: inline-block;
 }

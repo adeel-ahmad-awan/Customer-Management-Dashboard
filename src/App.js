@@ -1,6 +1,8 @@
 import Navbar from "./Navbar";
 import Customers from "./pages/Customers";
+import CustomerDetails from "./pages/CustomerDetails";
 import Home from "./pages/Home";
+import Logout from "./pages/Logout";
 import { Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -20,7 +22,6 @@ function App() {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      console.log(1,data.data);
       setData(data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -32,14 +33,16 @@ function App() {
       <Navbar />
       <div className="container">
         <Routes>
-          <Route
-            path="/home"
-            element={<Home report={data.data} />}
-          />
+          <Route path="/home" element={<Home report={data.data} />} />
           <Route
             path="/customers"
             element={<Customers customerData={customerData} />}
           />
+          <Route
+            path="/customers-details/:name"
+            element={<CustomerDetails />}
+          />
+          <Route path="/logout" element={<Logout />} />
         </Routes>
       </div>
     </>

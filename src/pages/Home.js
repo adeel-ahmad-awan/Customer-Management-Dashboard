@@ -1,8 +1,17 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
+// eslint-disable-next-line
 import { Chart as ChartJS } from "chart.js/auto";
+import { useNavigate } from "react-router-dom";
 
 function Home(props) {
+  const navigate = useNavigate();
+
+  if (!props.report) {
+    navigate("/");
+    return null;
+  }
+
   const barChartLabels = props.report.map((item) => {
     const [year, month] = item.month.split("-");
     const formattedDate = new Date(year, month - 1).toLocaleDateString(
@@ -23,7 +32,7 @@ function Home(props) {
       {
         label: "",
         data: barChartData,
-        backgroundColor: ["blue"],
+        backgroundColor: ["#2050fe"],
       },
     ],
   };
@@ -76,10 +85,12 @@ function Home(props) {
           </tr>
         </thead>
         <tbody>
-        <tr>
-          <td className="homePageTableData">${convertNumberToWords(sumArr)}</td>
-          <td className="homePageTableData">{sumSeats}</td>
-        </tr>
+          <tr>
+            <td className="homePageTableData">
+              ${convertNumberToWords(sumArr)}
+            </td>
+            <td className="homePageTableData">{sumSeats}</td>
+          </tr>
         </tbody>
       </table>
 
