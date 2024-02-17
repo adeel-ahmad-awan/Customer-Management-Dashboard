@@ -3,26 +3,28 @@ import { useParams } from "react-router-dom";
 
 const CustomersDetails = () => {
   const { name } = useParams();
-  const customerDataUrl =
-    "https://startdeliver-mock-api.glitch.me/customer/?name=" + name;
+  const customerDataUrl = `https://startdeliver-mock-api.glitch.me/customer/?name=${name}`;
 
   const [customerData, setCustomerData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchData(customerDataUrl, setCustomerData);
-  }, [customerDataUrl]);
+    const fetchData = async (url) => {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const data = await response.json();
+        setCustomerData(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
-  const fetchData = async (url, setData) => {
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      setData(data);
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+    fetchData(customerDataUrl);
+  }, [customerDataUrl]);
 
   return (
     <div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Customers(props) {
+function Customers({ customerData }) {
   return (
     <>
       <h1 className="customerPageHeading">Customers</h1>
@@ -17,7 +17,7 @@ function Customers(props) {
           </tr>
         </thead>
         <tbody>
-          {props.customerData.map((customer) => (
+          {customerData.map((customer) => (
             <tr className="customerPageTableRow" key={customer.id}>
               <td colSpan="2" className="customerPageTableRowData">
                 <Link to={`/customers-details/${customer.name}`}>
