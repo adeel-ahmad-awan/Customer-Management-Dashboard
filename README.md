@@ -18,7 +18,7 @@ To get started with the project, follow these steps:
 1. **Clone the Repository**: Clone this repository to your local machine using the following command:
 
 ```
-git clone https://github.com/your-username/customer-management-dashboard.git
+git clone git@github.com:adeel-ahmad-awan/Customer-Management-Dashboard.git
 ```
 
 2. **Install Dependencies**: Navigate to the project directory and install dependencies using npm or yarn:
@@ -47,10 +47,16 @@ In the project directory, you can run the following scripts:
 
 For more information on each script and advanced configurations, refer to the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
+## Screen Shots
 
-## Learn More
+### Home
 
-To learn more about React and Create React App, check out the following resources:
+![Home](/screenshots/home.png?raw=true "Home")
 
-- [React documentation](https://reactjs.org/)
-- [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started)
+### Customers
+
+![Customers](/screenshots/Customers.png?raw=true "Customers")
+
+### Customer Details
+
+![Customer Details](/screenshots/Customer%20Details.png?raw=true "Customer Details")
